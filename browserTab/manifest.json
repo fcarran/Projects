@@ -1,0 +1,24 @@
+{
+
+    "manifest_version": 2,
+    "name": "wellHello",
+    "version": "1.0",
+  
+    "description": "A quick check-in with every new tab.",
+
+    "author": "Fernando Carranza",
+    
+    "chrome_url_overrides": {
+        "newtab": "skeleton.html"
+    },
+
+    "browser_action": {
+        "default_icon": "packIcon.png",
+        "default_title": "Well, Hello There"
+    },
+
+    
+  
+    "permissions": ["activeTab"]
+  
+  }
