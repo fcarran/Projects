@@ -13,5 +13,5 @@ setInterval(function(){
 }, 1000);
 */
 
-var weather = document.querySelector("#weather");
-weather.style.color = "blue";
+var weather = document.querySelector(".weather");
+// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
