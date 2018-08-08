@@ -15,3 +15,19 @@ setInterval(function(){
 
 var weather = document.querySelector(".weather");
 // San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
+
+var click = document.querySelector("button");
+var bod = document.querySelector("body");
+var isColor = false;
+
+click.addEventListener("click", function(){
+    if(isColor){
+        bod.style.backgroundColor = "white";
+        isColor = false;
+    } else {
+        bod.style.backgroundColor = "orange";
+        isColor = true;
+    }
+});
+
+
