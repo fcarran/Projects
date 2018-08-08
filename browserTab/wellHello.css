@@ -8,3 +8,14 @@ p {
     font-size: 15px;
 }
 
+.day {
+    background-image: linear-gradient(
+        to right, red 40%, orange
+    );
+}
+
+.night {
+    background-image: linear-gradient(
+        to right, blue 40%, purple
+    );
+}
