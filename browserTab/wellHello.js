@@ -46,6 +46,10 @@ function farenheitToCelsius(k) {
     return Math.round((k - 32) * 0.5556);
 }
 
+function humidityPercentage(h) {
+    return Math.round(h * 100);
+  }
+
 
 //time alter
 //TODO setup if statement for day/night clock color
