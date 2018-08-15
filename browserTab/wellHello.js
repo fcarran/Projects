@@ -18,7 +18,7 @@ isItDark();
 
 //weather alter
 var weather = document.querySelector(".weather");
-// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863/exclude=
+// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
 
 var getWeather = function() {
     if(navigator.geolocation){
@@ -31,6 +31,15 @@ var getWeather = function() {
     else {
         window.alert("Unable to find location");
     }
+}
+
+function showWeather(lat, long){
+    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}`;
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+    displayWeather(object);
 }
 
 
