@@ -50,6 +50,24 @@ function humidityPercentage(h) {
     return Math.round(h * 100);
   }
 
+function degreesToDirection(degrees) {
+    var range = 360/16;
+    var low = 360 - range/2;
+    var high = (low + range) % 360;
+    var angles = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+    for (i in angles) {
+
+        if(degrees>= low && degrees < high)
+            return angles[i];
+
+        low = (low + range) % 360;
+        high = (high + range) % 360;
+    }
+}
+
+function knotsToKilometres(knot) {
+  return Math.round(knot * 1.852);
+}
 
 //time alter
 //TODO setup if statement for day/night clock color
