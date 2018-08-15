@@ -42,6 +42,10 @@ function showWeather(lat, long){
     displayWeather(object);
 }
 
+function farenheitToCelsius(k) {
+    return Math.round((k - 32) * 0.5556);
+}
+
 
 //time alter
 //TODO setup if statement for day/night clock color
