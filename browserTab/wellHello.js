@@ -17,6 +17,7 @@ function isItDark(){
 isItDark();
 
 //weather alter
+//TODO refactor what is needed and what isnt when displaying weather
 var weather = document.querySelector(".weather");
 // San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
 
@@ -34,7 +35,7 @@ var getWeather = function() {
 }
 
 function showWeather(lat, long){
-    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}`;
+    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
@@ -68,6 +69,73 @@ function degreesToDirection(degrees) {
 function knotsToKilometres(knot) {
   return Math.round(knot * 1.852);
 }
+
+var weatherImages = {
+    "clear-day": "clear-day.svg",
+    "clear-night": "clear-night.svg",
+    "rain": "rain.svg",
+    "snow": "snow.svg",
+    "sleet": "sleet.svg",
+    "wind": "wind.svg",
+    "fog": "fog.svg",
+    "cloudy": "cloudy.svg",
+    "partly-cloudy-day": "partly-cloudy-day.svg",
+    "partly-cloudy-night": "partly-cloudy-night.svg",
+    "hail": "hail.svg",
+    "thunderstorm": "thunderstorm.svg",
+    "tornado": "tornado.svg"
+}
+  
+  
+  var object;
+  
+function displayWeather(object) {
+      humidity.innerHTML = "Humidity: " + humidityPercentage(object.currently.humidity) + "%";
+      weatherIcon.src = "images/" + weatherImages[object.currently.icon]; <!--  Attaching our icons to the weather data here...  -->
+      pressure.innerHTML = "Pressure: " + object.currently.pressure + " mb";
+      uvIndex.innerHTML = "uvIndex: " + object.currently.uvIndex;
+      temperatureIcon.src = "images/thermometer.svg";
+      temperature.innerHTML = farenheitToCelsius(object.currently.temperature) + " C" + " / " + object.currently.temperature + " F";
+      windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
+      windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
+      weatherSummary.innerHTML = "Current Location: " + object.timezone + " <br/> <br/> Weather Summary: " + object.currently.summary;
+      document.getElementById("current-icon").style.backgroundColor = "#002db3"; 
+      document.getElementById("weather-summary").style.backgroundColor = "#002db3"; 
+      console.log(object);
+  
+}
+
+var humidity;
+var weatherIcon;
+var pressure;
+var uvIndex;
+var temperature;
+var temperatureIcon;
+var windBearing;
+var windSpeed;
+var weatherSummary;
+
+window.onload = function() {
+  humidity = document.getElementById("current-humidity");
+  weatherIcon = document.getElementById("current-icon");
+  pressure = document.getElementById("current-pressure");
+  uvIndex = document.getElementById("current-uvIndex");
+  temperature = document.getElementById("current-temperature");
+  temperatureIcon = document.getElementById("temperature-icon");
+  windBearing = document.getElementById("current-wind-bearing");
+  windSpeed = document.getElementById("current-wind-speed");
+  weatherSummary = document.getElementById("weather-summary");
+}
+
+ function showWeather(lat, long) {
+    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+    displayWeather(object)   
+  }
+
 
 //time alter
 //TODO setup if statement for day/night clock color
