@@ -1,6 +1,6 @@
 //body alter
 const timeOfDay = document.querySelector("body");
-
+//TODO, at midnight, no CSS is selected, bc hour is 24. Add logic to rule this out
 function isItDark(){
     var timeInMs = new Date().getHours()
     // console.log(timeInMs);
