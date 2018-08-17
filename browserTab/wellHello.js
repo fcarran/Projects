@@ -18,38 +18,38 @@ isItDark();
 
 //weather alter
 //TODO refactor what is needed and what isnt when displaying weather
-var weather = document.querySelector(".weather");
+//var weather = document.querySelector(".weather");
 // San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
 
-var getWeather = function() {
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(function(position){
-            var lat = position.coords.latitude;
-            var long = position.coords.longitude;
-            showWeather(lat, long)
-        })
-    }
-    else {
-        window.alert("Unable to find location");
-    }
-}
+var humidity;
+var weatherIcon;
+var pressure;
+var uvIndex;
+var temperature;
+var temperatureIcon
+var windBearing;
+var windSpeed;
+var weatherSummary;
 
-function showWeather(lat, long){
-    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = url;
-    document.getElementsByTagName("head")[0].appendChild(script);
-    displayWeather(object);
+window.onload = function() { //assign each global variable to it's respective ID element
+  humidity = document.getElementById("current-humidity");
+  weatherIcon = document.getElementById("current-icon");
+  pressure = document.getElementById("current-pressure");
+  uvIndex = document.getElementById("current-uvIndex");
+  temperature = document.getElementById("current-temperature");
+  temperatureIcon = document.getElementById("temperature-icon");
+  windBearing = document.getElementById("current-wind-bearing");
+  windSpeed = document.getElementById("current-wind-speed");
+  weatherSummary = document.getElementById("weather-summary");
 }
 
 function farenheitToCelsius(k) {
-    return Math.round((k - 32) * 0.5556);
+  return Math.round((k - 32) * 0.5556 );
 }
 
 function humidityPercentage(h) {
-    return Math.round(h * 100);
-  }
+  return Math.round(h * 100);
+}
 
 function degreesToDirection(degrees) {
     var range = 360/16;
@@ -67,74 +67,66 @@ function degreesToDirection(degrees) {
 }
 
 function knotsToKilometres(knot) {
-  return Math.round(knot * 1.852);
+  return Math.round( knot * 1.852);
 }
 
 var weatherImages = {
-    "clear-day": "clear-day.svg",
-    "clear-night": "clear-night.svg",
-    "rain": "rain.svg",
-    "snow": "snow.svg",
-    "sleet": "sleet.svg",
-    "wind": "wind.svg",
-    "fog": "fog.svg",
-    "cloudy": "cloudy.svg",
-    "partly-cloudy-day": "partly-cloudy-day.svg",
-    "partly-cloudy-night": "partly-cloudy-night.svg",
-    "hail": "hail.svg",
-    "thunderstorm": "thunderstorm.svg",
-    "tornado": "tornado.svg"
-}
-  
-  
-  var object;
-  
-function displayWeather(object) {
-      humidity.innerHTML = "Humidity: " + humidityPercentage(object.currently.humidity) + "%";
-      weatherIcon.src = "images/" + weatherImages[object.currently.icon]; <!--  Attaching our icons to the weather data here...  -->
-      pressure.innerHTML = "Pressure: " + object.currently.pressure + " mb";
-      uvIndex.innerHTML = "uvIndex: " + object.currently.uvIndex;
-      temperatureIcon.src = "images/thermometer.svg";
-      temperature.innerHTML = farenheitToCelsius(object.currently.temperature) + " C" + " / " + object.currently.temperature + " F";
-      windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
-      windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
-      weatherSummary.innerHTML = "Current Location: " + object.timezone + " <br/> <br/> Weather Summary: " + object.currently.summary;
-      document.getElementById("current-icon").style.backgroundColor = "#002db3"; 
-      document.getElementById("weather-summary").style.backgroundColor = "#002db3"; 
-      console.log(object);
-  
+  "clear-day": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Sun_icon.svg/252px-Sun_icon.svg.png",
+  "clear-night": "http://www.clker.com/cliparts/f/S/2/p/7/u/gold-matte-moon.svg",
+  "rain": "https://cdn3.iconfinder.com/data/icons/weather-16/256/Rainy_Day-512.png",
+  "snow": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Nuvola_weather_snow.svg/1000px-Nuvola_weather_snow.svg.png",
+  "sleet": "http://www.clker.com/cliparts/f/6/7/4/1206565674431593790Anonymous_simple_weather_symbols_10.svg.hi.png",
+  "wind": "http://www.haotu.net/up/4233/128/216-wind.png",
+  "fog": "http://www.iconninja.com/files/81/344/943/fog-cloud-hiding-the-sun-weather-interface-symbol-icon.svg",
+  "cloudy": "http://camera.thietbianninh.com/images/icon-2.png",
+  "partly-cloudy-day": "http://meteo.cw/images_www/weather_icons1/weather_icon_03.png",
+  "partly-cloudy-night": "http://icon-park.com/imagefiles/simple_weather_icons_cloudy_night.png",
+  "hail": "http://icons.iconarchive.com/icons/icons8/ios7/256/Weather-Hail-icon.png",
+  "thunderstorm": "http://findicons.com/files/icons/2613/android_weather_extended/480/thunderstorms.png",
+  "tornado": "http://hddfhm.com/images/clipart-of-a-tornado-11.png"
 }
 
-var humidity;
-var weatherIcon;
-var pressure;
-var uvIndex;
-var temperature;
-var temperatureIcon;
-var windBearing;
-var windSpeed;
-var weatherSummary;
+// var getWeather = function() {
+//     if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
+//       navigator.geolocation.getCurrentPosition(function(position){
+//         var lat = position.coords.latitude;
+//         var long = position.coords.longitude;
+//         showWeather(lat, long)
+//       })
+//     }
+//        else {
+//             window.alert("Could not get location");
+//       }
+//   }
 
-window.onload = function() {
-  humidity = document.getElementById("current-humidity");
-  weatherIcon = document.getElementById("current-icon");
-  pressure = document.getElementById("current-pressure");
-  uvIndex = document.getElementById("current-uvIndex");
-  temperature = document.getElementById("current-temperature");
-  temperatureIcon = document.getElementById("temperature-icon");
-  windBearing = document.getElementById("current-wind-bearing");
-  windSpeed = document.getElementById("current-wind-speed");
-  weatherSummary = document.getElementById("weather-summary");
-}
 
- function showWeather(lat, long) {
-    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
+ 
+  function showWeather(lat, long) {
+    var url = `https://api.darksky.net/forecast/f672ff13193bfcc40427a678ebfdbc71/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
     document.getElementsByTagName("head")[0].appendChild(script);
     displayWeather(object)   
   }
+
+var object;
+
+ function displayWeather(object) {
+    humidity.innerHTML = "Humidity: " + humidityPercentage(object.currently.humidity) + "%";
+    weatherIcon.src = weatherImages[object.currently.icon];
+    pressure.innerHTML = "Pressure: " + object.currently.pressure + " mb";
+    uvIndex.innerHTML = "uvIndex: " + object.currently.uvIndex;
+    temperature.innerHTML = farenheitToCelsius(object.currently.temperature) + " C" + " / " + object.currently.temperature + " F";
+   temperatureIcon.src = "https://cdn4.iconfinder.com/data/icons/medicons-2/512/thermometer-512.png";
+    windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
+    windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
+    weatherSummary.innerHTML = "Current Location: " + object.timezone + " <br/> <br/> Weather Summary: " + object.currently.summary;
+     document.getElementById("current-icon").style.backgroundColor = "hsl(216, 100%, 60%)"; 
+    document.getElementById("weather-summary").style.backgroundColor = "hsl(216, 100%, 60%)"; 
+    console.log("this is within the displayWeather function");
+    console.log(object);
+ }
 
 
 //time alter
