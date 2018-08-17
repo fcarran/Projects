@@ -41,6 +41,7 @@ window.onload = function() { //assign each global variable to it's respective ID
   windBearing = document.getElementById("current-wind-bearing");
   windSpeed = document.getElementById("current-wind-speed");
   weatherSummary = document.getElementById("weather-summary");
+  getWeather();
 }
 
 function farenheitToCelsius(k) {
@@ -86,23 +87,24 @@ var weatherImages = {
   "tornado": "http://hddfhm.com/images/clipart-of-a-tornado-11.png"
 }
 
-// var getWeather = function() {
-//     if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
-//       navigator.geolocation.getCurrentPosition(function(position){
-//         var lat = position.coords.latitude;
-//         var long = position.coords.longitude;
-//         showWeather(lat, long)
-//       })
-//     }
-//        else {
-//             window.alert("Could not get location");
-//       }
-//   }
 
+
+function getWeather() {
+    if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
+      navigator.geolocation.getCurrentPosition(function(position){
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        showWeather(lat, long)
+      })
+    }
+       else {
+            window.alert("Could not get location");
+      }
+  }
 
  
   function showWeather(lat, long) {
-    var url = `https://api.darksky.net/forecast/f672ff13193bfcc40427a678ebfdbc71/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
+    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;

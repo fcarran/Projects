@@ -4,6 +4,8 @@
     "name": "wellHello",
     "version": "1.0",
   
+    "content_security_policy": "script-src 'self' https://api.darksky.net; object-src 'self'",
+
     "description": "A quick check-in with every new tab.",
 
     "author": "Fernando Carranza",
@@ -18,5 +20,7 @@
     },
   
     "permissions": ["activeTab"]
-  
+    
+
+    
   }
