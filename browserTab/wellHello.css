@@ -5,10 +5,6 @@ p {
     
 }
 
-/*.weather {
-    
-}*/
-an
 .day {
     background-image: linear-gradient(
         to right, red 40%, orange
@@ -55,6 +51,13 @@ an
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
 
+.dark-sky {
+    border:1px solid white;
+    
+    justify-content: center;
+    
+    
+}
 
 #current-icon {
     width: 90px;
@@ -102,6 +105,12 @@ a {
     cursor: default;
 }
 
+.dark-sky-link {
+    text-align: center;
+    margin: 0.5rem;
+    font-size: 15px;
+}
+
 #current-temperature {
     cursor: pointer;
 }
@@ -118,13 +127,6 @@ a {
     background-color: #FFFFFF;
     color: #002db3;   
     transition: 0.5s;
-}
-
-#getWeather:hover {
-    background-color: #002db3;
-    color: #FFFFFF;
-    border: 3px solid #FFFFFF;
-    border-radius: 5px;
 }
 
 #weather-summary {

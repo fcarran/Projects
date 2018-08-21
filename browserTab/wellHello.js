@@ -88,12 +88,13 @@ var weatherImages = {
 }
 
 
-
+//prompt user to grant location permissions, put lat and long in variables for other functions
 function getWeather() {
     if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
       navigator.geolocation.getCurrentPosition(function(position){
         var lat = position.coords.latitude;
         var long = position.coords.longitude;
+        console.log(lat, long);
         showWeather(lat, long)
       })
     }
@@ -110,6 +111,7 @@ function getWeather() {
     script.src = url;
     document.getElementsByTagName("head")[0].appendChild(script);
     displayWeather(object)   
+    console.log(url);
   }
 
 var object;
@@ -123,9 +125,9 @@ var object;
    temperatureIcon.src = "https://cdn4.iconfinder.com/data/icons/medicons-2/512/thermometer-512.png";
     windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
     windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
-    weatherSummary.innerHTML = "Current Location: " + object.timezone + " <br/> <br/> Weather Summary: " + object.currently.summary;
-     document.getElementById("current-icon").style.backgroundColor = "hsl(216, 100%, 60%)"; 
-    document.getElementById("weather-summary").style.backgroundColor = "hsl(216, 100%, 60%)"; 
+    weatherSummary.innerHTML = "Weather Summary: " + object.currently.summary;
+     //document.getElementById("current-icon").style.backgroundColor = "hsl(216, 100%, 60%)"; 
+    //document.getElementById("weather-summary").style.backgroundColor = "hsl(216, 100%, 60%)"; 
     console.log("this is within the displayWeather function");
     console.log(object);
  }
