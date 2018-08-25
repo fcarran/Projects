@@ -16,6 +16,8 @@ function isItDark(){
 
 isItDark();
 
+//this is a test comment on a new branch
+
 //weather alter
 //TODO refactor what is needed and what isnt when displaying weather
 //var weather = document.querySelector(".weather");
