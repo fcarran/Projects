@@ -3,9 +3,9 @@ const timeOfDay = document.querySelector("body");
 //TODO, at midnight, no CSS is selected, bc hour is 24. Add logic to rule this out
 function isItDark(){
     var timeInMs = new Date().getHours()
-    // console.log(timeInMs);
+    //console.log(timeInMs);
     //if time is less than noon (12)
-    if(timeInMs < 12){
+    if(timeInMs <= 12 || timeInMs == 0){
         timeOfDay.classList.toggle("day"); //toggle morning css
     }
     //if time is more than 12
@@ -15,6 +15,8 @@ function isItDark(){
 }
 
 isItDark();
+
+
 
 //weather alter
 //TODO refactor what is needed and what isnt when displaying weather
