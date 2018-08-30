@@ -3,13 +3,13 @@ const timeOfDay = document.querySelector("body");
 //TODO, at midnight, no CSS is selected, bc hour is 24. Add logic to rule this out
 function isItDark(){
     var timeInMs = new Date().getHours()
-    //console.log(timeInMs);
+    console.log("time is: " + timeInMs);
     //if time is less than noon (12)
-    if(timeInMs <= 12 || timeInMs == 0){
+    if(timeInMs >= 01 && timeInMs < 18){
         timeOfDay.classList.toggle("day"); //toggle morning css
     }
     //if time is more than 12
-    if(timeInMs > 12){
+    if(timeInMs > 18){
         timeOfDay.classList.toggle("night"); //toggle day css
     }
 }
