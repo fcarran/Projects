@@ -44,6 +44,7 @@ window.onload = function() { //assign each global variable to it's respective ID
   windSpeed = document.getElementById("current-wind-speed");
   weatherSummary = document.getElementById("weather-summary");
   getWeather();
+  setDate()
 }
 
 function farenheitToCelsius(k) {
@@ -52,21 +53,6 @@ function farenheitToCelsius(k) {
 
 function humidityPercentage(h) {
   return Math.round(h * 100);
-}
-
-function degreesToDirection(degrees) {
-    var range = 360/16;
-    var low = 360 - range/2;
-    var high = (low + range) % 360;
-    var angles = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
-    for (i in angles) {
-
-        if(degrees>= low && degrees < high)
-            return angles[i];
-
-        low = (low + range) % 360;
-        high = (high + range) % 360;
-    }
 }
 
 function knotsToKilometres(knot) {
@@ -143,24 +129,21 @@ const minHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
 
 function setDate(){
-    const now = new Date();
-    const seconds = now.getSeconds();
-    const secondsDegrees = ((seconds / 60) * 360) + 90;
-    secondHand.style.transform = `rotate(${secondsDegrees}deg)`; //adjust the number of degrees that secondsDegrees specifies
-    //console.log(seconds);
-        
-    //set min hand interval
-    const minutes = now.getMinutes();
-    const minutesDegrees = ((minutes / 60) * 360) + 90;
-    minHand.style.transform = `rotate(${minutesDegrees}deg)`; //adjust the number of degrees that minutesDegrees specifies
-    //console.log(minutes);
-    //set hour hand interval
-    const hours = now.getHours();
-    const hourDegrees = ((hours / 12) * 360) + 90;
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`; //adjust the number of degrees that hourDegrees specifies
-    console.log(hours);
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('time').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(setDate, 500);
 }
-setInterval(setDate, 1000);
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
 
 
 
