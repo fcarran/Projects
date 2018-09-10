@@ -123,7 +123,6 @@ var object;
 
 //time alter
 
-
 function setDate(){
     var today = new Date();
     var h = today.getHours();
