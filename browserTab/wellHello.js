@@ -122,11 +122,7 @@ var object;
 
 
 //time alter
-//TODO setup if statement for day/night clock color
 
-const secondHand = document.querySelector('.second-hand');
-const minHand = document.querySelector('.min-hand');
-const hourHand = document.querySelector('.hour-hand');
 
 function setDate(){
     var today = new Date();
