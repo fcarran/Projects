@@ -59,10 +59,10 @@ p {
     margin-left: 50em;
     margin-bottom: 2%;
     margin-top: 2%;
-    /*width: 400px;
+    width: 400px;
     height: 300px;
     padding: 10px;
-    border-radius: 10px;*/
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-content: space-around;

@@ -105,14 +105,14 @@ function getWeather() {
 var object;
 
  function displayWeather(object) {
-    humidity.innerHTML = "Humidity: " + humidityPercentage(object.currently.humidity) + "%";
+    //humidity.innerHTML = "Humidity: " + humidityPercentage(object.currently.humidity) + "%";
     weatherIcon.src = weatherImages[object.currently.icon];
-    pressure.innerHTML = "Pressure: " + object.currently.pressure + " mb";
-    uvIndex.innerHTML = "uvIndex: " + object.currently.uvIndex;
+    //pressure.innerHTML = "Pressure: " + object.currently.pressure + " mb";
+    //uvIndex.innerHTML = "uvIndex: " + object.currently.uvIndex;
     temperature.innerHTML = farenheitToCelsius(object.currently.temperature) + " C" + " / " + object.currently.temperature + " F";
    temperatureIcon.src = "https://cdn4.iconfinder.com/data/icons/medicons-2/512/thermometer-512.png";
-    windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
-    windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
+    //windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
+    //windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
     weatherSummary.innerHTML = "Weather Summary: " + object.currently.summary;
      //document.getElementById("current-icon").style.backgroundColor = "hsl(216, 100%, 60%)"; 
     //document.getElementById("weather-summary").style.backgroundColor = "hsl(216, 100%, 60%)"; 
