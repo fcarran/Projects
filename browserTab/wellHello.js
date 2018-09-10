@@ -1,6 +1,5 @@
 //body alter
 const timeOfDay = document.querySelector("body");
-//TODO, at midnight, no CSS is selected, bc hour is 24. Add logic to rule this out
 function isItDark(){
     var timeInMs = new Date().getHours()
     console.log("time is: " + timeInMs);
@@ -16,10 +15,9 @@ function isItDark(){
 
 isItDark();
 
-
+//TODO: On page load, use a new wallpaper image
 
 //weather alter
-//TODO refactor what is needed and what isnt when displaying weather
 //var weather = document.querySelector(".weather");
 // San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
 
