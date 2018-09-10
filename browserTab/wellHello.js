@@ -113,7 +113,7 @@ var object;
    temperatureIcon.src = "https://cdn4.iconfinder.com/data/icons/medicons-2/512/thermometer-512.png";
     //windBearing.innerHTML = "Wind Direction: " + degreesToDirection(object.currently.windBearing);
     //windSpeed.innerHTML = "Wind Speed: " + knotsToKilometres(object.currently.windSpeed) + " km/h";
-    weatherSummary.innerHTML = "Weather Summary: " + object.currently.summary;
+    weatherSummary.innerHTML = "Current Weather: " + object.currently.summary;
      //document.getElementById("current-icon").style.backgroundColor = "hsl(216, 100%, 60%)"; 
     //document.getElementById("weather-summary").style.backgroundColor = "hsl(216, 100%, 60%)"; 
     console.log("this is within the displayWeather function");
