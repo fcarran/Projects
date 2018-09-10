@@ -12,9 +12,11 @@ p {
 }
 
 .night {
-    background-image: linear-gradient(
+    /*background-image: linear-gradient(
         to right, blue 40%, purple
-    );
+    );*/
+    background-image: url(https://images4.alphacoders.com/810/81006.jpg);
+
 }
 
 #time{
