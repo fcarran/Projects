@@ -13,7 +13,7 @@ function isItDark(){
     }
 }
 
-isItDark();
+//isItDark();
 
 //TODO: On page load, use a new wallpaper image
 
@@ -42,7 +42,8 @@ window.onload = function() { //assign each global variable to it's respective ID
   windSpeed = document.getElementById("current-wind-speed");
   weatherSummary = document.getElementById("weather-summary");
   getWeather();
-  setDate()
+  setDate();
+  isItDark();
 }
 
 function farenheitToCelsius(k) {
