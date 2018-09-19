@@ -4,7 +4,7 @@ function isItDark(){
     var timeInMs = new Date().getHours()
     console.log("time is: " + timeInMs);
     //if time is less than noon (12)
-    if(timeInMs >= 01 && timeInMs < 18){
+    if(timeInMs >= 01 && timeInMs <= 18){
         timeOfDay.classList.toggle("day"); //toggle morning css
     }
     //if time is more than 12
