@@ -76,7 +76,7 @@ var weatherImages = {
 
 
 //prompt user to grant location permissions, put lat and long in variables for other functions
-function getWeather() {
+/* function getWeather() {
     if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
       navigator.geolocation.getCurrentPosition(function(position){
         var lat = position.coords.latitude;
@@ -88,7 +88,37 @@ function getWeather() {
        else {
             window.alert("Could not get location");
       }
+  } */
+function getWeather(){
+    if(localStorage.getItem(lat) = ""){//run below getCurrentPosition, else, pull it into showWeather so you don't have to see the permission prompt}
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
+    }
+}
+    
+  function successLocation(position){
+      var lat = position.coords.latitude;
+      var long = position.coords.longitude;
+      console.log(lat, long);
+      console.log("I'm in the successLocation function");
+      localStorage.setItem(lat, long);
+      showWeather(lat, long);
+      
   }
+
+  function errorLocation(){
+      getWeather();
+  }
+
+  function checkAuthorized(){
+      if(typeof localStorage['lat'] == "undefined" || localStorage['long'] == "undefined" ){
+        errorLocation();
+      }
+      else 
+      successLocation();
+  } 
+  
+  
 
  
   function showWeather(lat, long) {
