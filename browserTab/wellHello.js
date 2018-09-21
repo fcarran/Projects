@@ -32,6 +32,7 @@ var windSpeed;
 var weatherSummary;
 
 window.onload = function() { //assign each global variable to it's respective ID element
+//TODO: Remove variables that we no longer need
   humidity = document.getElementById("current-humidity");
   weatherIcon = document.getElementById("current-icon");
   pressure = document.getElementById("current-pressure");
@@ -41,10 +42,40 @@ window.onload = function() { //assign each global variable to it's respective ID
   windBearing = document.getElementById("current-wind-bearing");
   windSpeed = document.getElementById("current-wind-speed");
   weatherSummary = document.getElementById("weather-summary");
-  getWeather();
+  //getWeather();
   setDate();
   isItDark();
-}
+
+  console.log(localStorage);
+
+  if(localStorage.getItem(lat, long) == true){
+    console.log("we have the values!");
+    localStorage.getItem(lat, long);
+    showWeather(lat, long);
+  }
+  else{
+    console.log("youre in the getitem if statement, need to ask for permissions");
+    getWeather();
+  }
+
+  function getWeather() {
+    if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
+      navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
+      }
+    }
+
+    function successLocation(position){
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        console.log(lat, long);
+        localStorage.setItem(lat, long);
+        showWeather(lat, long);
+    }
+
+    function errorLocation(){
+      console.log("Need to ask for permissions");
+    }
+} 
 
 function farenheitToCelsius(k) {
   return Math.round((k - 32) * 0.5556 );
@@ -89,34 +120,26 @@ var weatherImages = {
             window.alert("Could not get location");
       }
   } */
-function getWeather(){
-    if(localStorage.getItem(lat) = ""){//run below getCurrentPosition, else, pull it into showWeather so you don't have to see the permission prompt}
+/* function getWeather(){
+    //run below getCurrentPosition, else, pull it into showWeather so you don't have to see the permission prompt }
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
     }
-}
+} */
     
-  function successLocation(position){
-      var lat = position.coords.latitude;
-      var long = position.coords.longitude;
-      console.log(lat, long);
-      console.log("I'm in the successLocation function");
-      localStorage.setItem(lat, long);
-      showWeather(lat, long);
-      
-  }
+  
 
-  function errorLocation(){
+  /* function errorLocation(){
       getWeather();
-  }
+  } */
 
-  function checkAuthorized(){
+  /* function checkAuthorized(){
       if(typeof localStorage['lat'] == "undefined" || localStorage['long'] == "undefined" ){
         errorLocation();
       }
       else 
       successLocation();
-  } 
+  }  */
   
   
 
