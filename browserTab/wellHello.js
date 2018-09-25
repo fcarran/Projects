@@ -1,3 +1,78 @@
+
+//isItDark();
+
+//TODO: On page load, use a new wallpaper image
+
+//weather alter
+//var weather = document.querySelector(".weather");
+// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
+
+var weatherIcon;
+var temperature;
+var temperatureIcon
+var weatherSummary;
+var lat;
+var long;
+
+window.onload = function() { //assign each global variable to it's respective ID element
+  weatherIcon = document.getElementById("current-icon");
+  temperature = document.getElementById("current-temperature");
+  temperatureIcon = document.getElementById("temperature-icon");
+  weatherSummary = document.getElementById("weather-summary");
+  setDate();
+  isItDark();
+  canWeGetWeather();
+
+  console.log(localStorage);
+
+
+  /* if(localStorage.getItem(lat, long) === "null" && navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
+  } else {
+    localStorage.getItem(lat, long);
+    showWeather(lat, long);
+  } */
+
+/*   do{
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation)
+  } while (localStorage.getItem() == null);  */ 
+
+  /* if(localStorage.getItem(lat, long) == true){
+    console.log("we have the values!");
+    localStorage.getItem(lat, long);
+    showWeather(lat, long);
+  }
+  else{
+    console.log("youre in the getitem if statement, need to ask for permissions");
+    canWeGetWeather();
+  } */
+
+  function canWeGetWeather() {
+      if(typeof localStorage == null){ //STILL FAILING TO CHECK IF THIS VALUE EXISTS OR NOT
+        navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
+      } else {
+        console.log("We're now in the else statement for canWeGetWeather. Try to pass values lat and long from localStorage");
+        localStorage.getItem(lat, long);
+        showWeather(lat, long);
+      }
+    }
+
+    function successLocation(position){
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        //canWeGetWeather();
+        console.log(lat, long);
+        localStorage.setItem(lat, long);
+        showWeather(lat, long);
+    }
+
+    function errorLocation(){
+      console.log("Need to ask for permissions");
+    }
+
+    
+} 
+
 //body alter
 const timeOfDay = document.querySelector("body");
 function isItDark(){
@@ -12,70 +87,6 @@ function isItDark(){
         timeOfDay.classList.toggle("night"); //toggle day css
     }
 }
-
-//isItDark();
-
-//TODO: On page load, use a new wallpaper image
-
-//weather alter
-//var weather = document.querySelector(".weather");
-// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
-
-var humidity;
-var weatherIcon;
-var pressure;
-var uvIndex;
-var temperature;
-var temperatureIcon
-var windBearing;
-var windSpeed;
-var weatherSummary;
-
-window.onload = function() { //assign each global variable to it's respective ID element
-//TODO: Remove variables that we no longer need
-  humidity = document.getElementById("current-humidity");
-  weatherIcon = document.getElementById("current-icon");
-  pressure = document.getElementById("current-pressure");
-  uvIndex = document.getElementById("current-uvIndex");
-  temperature = document.getElementById("current-temperature");
-  temperatureIcon = document.getElementById("temperature-icon");
-  windBearing = document.getElementById("current-wind-bearing");
-  windSpeed = document.getElementById("current-wind-speed");
-  weatherSummary = document.getElementById("weather-summary");
-  //getWeather();
-  setDate();
-  isItDark();
-
-  console.log(localStorage);
-
-  if(localStorage.getItem(lat, long) == true){
-    console.log("we have the values!");
-    localStorage.getItem(lat, long);
-    showWeather(lat, long);
-  }
-  else{
-    console.log("youre in the getitem if statement, need to ask for permissions");
-    getWeather();
-  }
-
-  function getWeather() {
-    if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
-      navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
-      }
-    }
-
-    function successLocation(position){
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-        console.log(lat, long);
-        localStorage.setItem(lat, long);
-        showWeather(lat, long);
-    }
-
-    function errorLocation(){
-      console.log("Need to ask for permissions");
-    }
-} 
 
 function farenheitToCelsius(k) {
   return Math.round((k - 32) * 0.5556 );
@@ -107,7 +118,7 @@ var weatherImages = {
 
 
 //prompt user to grant location permissions, put lat and long in variables for other functions
-/* function getWeather() {
+/* function canWeGetWeather() {
     if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
       navigator.geolocation.getCurrentPosition(function(position){
         var lat = position.coords.latitude;
@@ -120,7 +131,7 @@ var weatherImages = {
             window.alert("Could not get location");
       }
   } */
-/* function getWeather(){
+/* function canWeGetWeather(){
     //run below getCurrentPosition, else, pull it into showWeather so you don't have to see the permission prompt }
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
@@ -130,7 +141,7 @@ var weatherImages = {
   
 
   /* function errorLocation(){
-      getWeather();
+      canWeGetWeather();
   } */
 
   /* function checkAuthorized(){
@@ -141,7 +152,11 @@ var weatherImages = {
       successLocation();
   }  */
   
-  
+
+/* 
+  We're currently getting this when localStorage exists...seems I cannot getItems...
+  https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/undefined,undefined?format=jsonp&callback=displayWeather 
+ */
 
  
   function showWeather(lat, long) {
