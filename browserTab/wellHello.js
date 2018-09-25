@@ -48,7 +48,7 @@ window.onload = function() { //assign each global variable to it's respective ID
   } */
 
   function canWeGetWeather() {
-      if(typeof localStorage == null){ //STILL FAILING TO CHECK IF THIS VALUE EXISTS OR NOT
+      if(localStorage.getItem("lat") === null || localStorage.getItem("long") === null){ //STILL FAILING TO CHECK IF THIS VALUE EXISTS OR NOT
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
       } else {
         console.log("We're now in the else statement for canWeGetWeather. Try to pass values lat and long from localStorage");
