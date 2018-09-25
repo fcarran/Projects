@@ -52,8 +52,11 @@ window.onload = function() { //assign each global variable to it's respective ID
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
       } else {
         console.log("We're now in the else statement for canWeGetWeather. Try to pass values lat and long from localStorage");
-        localStorage.getItem(lat, long);
-        showWeather(lat, long);
+        var localLat = localStorage.getItem("lat");
+        var localLong = localStorage.getItem("long");
+        console.log(localLat);
+        console.log(localLong);
+        showWeather(localLat, localLong);
       }
     }
 
@@ -61,8 +64,9 @@ window.onload = function() { //assign each global variable to it's respective ID
         var lat = position.coords.latitude;
         var long = position.coords.longitude;
         //canWeGetWeather();
-        console.log(lat, long);
-        localStorage.setItem(lat, long);
+        //console.log(lat, long);
+        localStorage.setItem("lat", JSON.stringify(lat));
+        localStorage.setItem("long", JSON.stringify(long));
         showWeather(lat, long);
     }
 
