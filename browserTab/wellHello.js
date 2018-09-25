@@ -1,7 +1,7 @@
 
 //isItDark();
 
-//TODO: On page load, use a new wallpaper image
+//TODO: clean up icons and comments
 
 //weather alter
 //var weather = document.querySelector(".weather");
