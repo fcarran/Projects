@@ -1,11 +1,7 @@
-
-//isItDark();
-
-//TODO: clean up icons and comments
-
-//weather alter
-//var weather = document.querySelector(".weather");
-// San Jose api call https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/37.3382,121.8863
+/*
+Author: Fernando Carranza
+Description: Chrome extension that will show current time and weather, along with different CSS depending on the time of day
+*/
 
 var weatherIcon;
 var temperature;
@@ -26,29 +22,8 @@ window.onload = function() { //assign each global variable to it's respective ID
   console.log(localStorage);
 
 
-  /* if(localStorage.getItem(lat, long) === "null" && navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
-  } else {
-    localStorage.getItem(lat, long);
-    showWeather(lat, long);
-  } */
-
-/*   do{
-    navigator.geolocation.getCurrentPosition(successLocation, errorLocation)
-  } while (localStorage.getItem() == null);  */ 
-
-  /* if(localStorage.getItem(lat, long) == true){
-    console.log("we have the values!");
-    localStorage.getItem(lat, long);
-    showWeather(lat, long);
-  }
-  else{
-    console.log("youre in the getitem if statement, need to ask for permissions");
-    canWeGetWeather();
-  } */
-
   function canWeGetWeather() {
-      if(localStorage.getItem("lat") === null || localStorage.getItem("long") === null){ //STILL FAILING TO CHECK IF THIS VALUE EXISTS OR NOT
+      if(localStorage.getItem("lat") === null || localStorage.getItem("long") === null){
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
       } else {
         console.log("We're now in the else statement for canWeGetWeather. Try to pass values lat and long from localStorage");
@@ -63,8 +38,6 @@ window.onload = function() { //assign each global variable to it's respective ID
     function successLocation(position){
         var lat = position.coords.latitude;
         var long = position.coords.longitude;
-        //canWeGetWeather();
-        //console.log(lat, long);
         localStorage.setItem("lat", JSON.stringify(lat));
         localStorage.setItem("long", JSON.stringify(long));
         showWeather(lat, long);
@@ -72,9 +45,7 @@ window.onload = function() { //assign each global variable to it's respective ID
 
     function errorLocation(){
       console.log("Need to ask for permissions");
-    }
-
-    
+    }   
 } 
 
 //body alter
@@ -120,48 +91,6 @@ var weatherImages = {
   "tornado": "http://hddfhm.com/images/clipart-of-a-tornado-11.png"
 }
 
-
-//prompt user to grant location permissions, put lat and long in variables for other functions
-/* function canWeGetWeather() {
-    if(navigator.geolocation){ //read-only property returns a geolocation object that gives web content access to the location of the computer
-      navigator.geolocation.getCurrentPosition(function(position){
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-        console.log(lat, long);
-        showWeather(lat, long)
-      })
-    }
-       else {
-            window.alert("Could not get location");
-      }
-  } */
-/* function canWeGetWeather(){
-    //run below getCurrentPosition, else, pull it into showWeather so you don't have to see the permission prompt }
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(successLocation, errorLocation);
-    }
-} */
-    
-  
-
-  /* function errorLocation(){
-      canWeGetWeather();
-  } */
-
-  /* function checkAuthorized(){
-      if(typeof localStorage['lat'] == "undefined" || localStorage['long'] == "undefined" ){
-        errorLocation();
-      }
-      else 
-      successLocation();
-  }  */
-  
-
-/* 
-  We're currently getting this when localStorage exists...seems I cannot getItems...
-  https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/undefined,undefined?format=jsonp&callback=displayWeather 
- */
-
  
   function showWeather(lat, long) {
     var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
@@ -203,7 +132,3 @@ function checkTime(i) {
   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
   return i;
 }
-
-
-
-
