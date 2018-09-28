@@ -18,6 +18,9 @@
         "default_icon": "packIcon.png",
         "default_title": "Well, Hello There"
     },
+
+    "icons": { 
+       "128": "wellHello.png" },
   
     "permissions": ["activeTab"]
     
