@@ -6,7 +6,7 @@
   
     "content_security_policy": "script-src 'self' https://api.darksky.net; object-src 'self'",
 
-    "description": "A quick check-in with every new tab.",
+    "description": "A quick weather update with every new tab.",
 
     "author": "Fernando Carranza",
     
