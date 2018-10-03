@@ -76,19 +76,19 @@ function knotsToKilometres(knot) {
 }
 
 var weatherImages = {
-  "clear-day": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Sun_icon.svg/252px-Sun_icon.svg.png",
-  "clear-night": "http://www.clker.com/cliparts/f/S/2/p/7/u/gold-matte-moon.svg",
-  "rain": "https://cdn3.iconfinder.com/data/icons/weather-16/256/Rainy_Day-512.png",
-  "snow": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Nuvola_weather_snow.svg/1000px-Nuvola_weather_snow.svg.png",
-  "sleet": "http://www.clker.com/cliparts/f/6/7/4/1206565674431593790Anonymous_simple_weather_symbols_10.svg.hi.png",
-  "wind": "http://www.haotu.net/up/4233/128/216-wind.png",
-  "fog": "http://www.iconninja.com/files/81/344/943/fog-cloud-hiding-the-sun-weather-interface-symbol-icon.svg",
-  "cloudy": "http://camera.thietbianninh.com/images/icon-2.png",
-  "partly-cloudy-day": "http://meteo.cw/images_www/weather_icons1/weather_icon_03.png",
-  "partly-cloudy-night": "http://icon-park.com/imagefiles/simple_weather_icons_cloudy_night.png",
-  "hail": "http://icons.iconarchive.com/icons/icons8/ios7/256/Weather-Hail-icon.png",
-  "thunderstorm": "http://findicons.com/files/icons/2613/android_weather_extended/480/thunderstorms.png",
-  "tornado": "http://hddfhm.com/images/clipart-of-a-tornado-11.png"
+  "clear-day": "/icons/clear-day-sun.png",
+  "clear-night": "/icons/clear-night-moon.png",
+  "rain": "/icons/rain.png",
+  "snow": "/icons/snow.png",
+  "sleet": "/icons/sleet.png",
+  "wind": "/icons/wind.png",
+  "fog": "/icons/fog.png",
+  "cloudy": "/icons/cloudy-gray.png",
+  "partly-cloudy-day": "/icons/partly-cloudy-day.png",
+  "partly-cloudy-night": "/icons/partly-cloudy-night.png",
+  "hail": "/icons/hail.png",
+  "thunderstorm": "/icons/thunder.png",
+  "tornado": "/icons/tornado.png"
 }
 
  
