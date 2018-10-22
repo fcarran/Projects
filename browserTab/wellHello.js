@@ -93,7 +93,7 @@ var weatherImages = {
 
  
   function showWeather(lat, long) {
-    var url = `https://api.darksky.net/forecast/30140b1b2d59c74c554f1d3b9a88f167/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
+    var url = `https://api.darksky.net/forecast/<KEY_HERE>/${lat},${long}` + `?format=jsonp&callback=displayWeather`;
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
